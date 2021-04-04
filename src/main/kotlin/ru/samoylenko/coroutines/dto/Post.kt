@@ -1,0 +1,10 @@
+package ru.samoylenko.coroutines.dto
+
+data class Post (
+    val id: Long,
+    val authorId: Long,
+    val content: String,
+    val published: Long,
+    val likedByMe : Boolean,
+    val likes: Int = 0
+)
