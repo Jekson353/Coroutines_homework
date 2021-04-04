@@ -4,10 +4,17 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import kotlinx.coroutines.*
 import okhttp3.*
+import okhttp3.logging.HttpLoggingInterceptor
 import ru.samoylenko.coroutines.dto.*
+import java.util.concurrent.TimeUnit
 import kotlin.coroutines.EmptyCoroutineContext
 
-val client = OkHttpClient.Builder().build()
+val client = OkHttpClient.Builder()
+    .addInterceptor(HttpLoggingInterceptor().apply {
+        level = HttpLoggingInterceptor.Level.BASIC
+    })
+    .connectTimeout(30, TimeUnit.SECONDS)
+    .build()
 
 fun main(){
 
